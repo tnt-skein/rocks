@@ -85,6 +85,13 @@ repository = {
          }
       }
    },
+   ["tnt-leadership"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-lifecycle"] = {
       ["scm-1"] = {
          {
