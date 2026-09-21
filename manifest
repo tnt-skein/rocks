@@ -1,6 +1,13 @@
 commands = {}
 modules = {}
 repository = {
+   ["tnt-external"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-must"] = {
       ["scm-1"] = {
          {
