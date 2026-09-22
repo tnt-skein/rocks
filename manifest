@@ -99,6 +99,13 @@ repository = {
          }
       }
    },
+   ["tnt-markdown"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-must"] = {
       ["scm-1"] = {
          {
