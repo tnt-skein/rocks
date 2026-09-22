@@ -127,6 +127,13 @@ repository = {
          }
       }
    },
+   ["tnt-loop"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-markdown"] = {
       ["scm-1"] = {
          {
