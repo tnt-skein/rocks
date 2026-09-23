@@ -176,6 +176,13 @@ repository = {
          }
       }
    },
+   ["tnt-maintenance"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-markdown"] = {
       ["scm-1"] = {
          {
