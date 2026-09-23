@@ -64,6 +64,13 @@ repository = {
          }
       }
    },
+   ["tnt-env"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-external"] = {
       ["scm-1"] = {
          {
