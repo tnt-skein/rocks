@@ -337,6 +337,13 @@ repository = {
          }
       }
    },
+   ["tnt-search"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-storage"] = {
       ["scm-1"] = {
          {
