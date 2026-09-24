@@ -204,6 +204,13 @@ repository = {
          }
       }
    },
+   ["tnt-mail"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-maintenance"] = {
       ["scm-1"] = {
          {
