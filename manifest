@@ -92,6 +92,13 @@ repository = {
          }
       }
    },
+   ["tnt-downtime"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-env"] = {
       ["scm-1"] = {
          {
