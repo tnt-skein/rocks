@@ -309,6 +309,13 @@ repository = {
          }
       }
    },
+   ["tnt-redis"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-remedy"] = {
       ["scm-1"] = {
          {
