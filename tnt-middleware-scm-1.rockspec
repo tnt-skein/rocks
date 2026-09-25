@@ -28,17 +28,24 @@ description = {
         Опознаватель — ULID; слой кладёт его в контекст файбера, откуда
         журнал берёт его в каждую запись остатка цепочки.
 
+        Слой cors разрешает чужим страницам читать ответы по списку
+        источников — точных и образцом поддомена, — сам отвечает
+        на предварительный OPTIONS и по умолчанию не разрешает ничего,
+        что не названо: способы, заголовки, срок и учётные данные.
+        Звёздочка вместе с учётными данными отвергается при сборке.
+
         Зависит от tnt-clock (монотонные часы замера), tnt-context
         (контекст файбера с опознавателем запроса), tnt-id (ULID),
-        tnt-log (журнал готовых слоёв) и tnt-external (подмена часов
-        и выдачи опознавателей в проверках). Покрытие строк и убитых
-        мутантов — 100 %.
+        tnt-log (журнал готовых слоёв), tnt-must (проверка настроек
+        слоя cors) и tnt-external (подмена часов и выдачи
+        опознавателей в проверках). Покрытие строк и убитых мутантов —
+        100 %.
     ]],
     homepage = 'https://github.com/tnt-skein/tnt-middleware',
     issues_url = 'https://github.com/tnt-skein/tnt-middleware/issues',
     maintainer = 'tnt-skein',
     license = 'MIT',
-    labels = { 'tarantool', 'middleware', 'pipeline', 'http', 'request-id' },
+    labels = { 'tarantool', 'middleware', 'pipeline', 'http', 'request-id', 'cors' },
 }
 
 dependencies = {
@@ -47,6 +54,7 @@ dependencies = {
     'tnt-context',
     'tnt-id',
     'tnt-log',
+    'tnt-must',
     'tnt-external',
 }
 
@@ -58,6 +66,7 @@ build = {
         ['tnt.middleware.filter'] = 'tnt/middleware/filter.lua',
         ['tnt.middleware.registry'] = 'tnt/middleware/registry.lua',
         ['tnt.middleware.layer.common'] = 'tnt/middleware/layer/common.lua',
+        ['tnt.middleware.layer.cors'] = 'tnt/middleware/layer/cors.lua',
         ['tnt.middleware.layer.log'] = 'tnt/middleware/layer/log.lua',
         ['tnt.middleware.layer.timing'] = 'tnt/middleware/layer/timing.lua',
         ['tnt.middleware.layer.rescue'] = 'tnt/middleware/layer/rescue.lua',
