@@ -106,6 +106,13 @@ repository = {
          }
       }
    },
+   ["tnt-cryptopro"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-data"] = {
       ["scm-1"] = {
          {
