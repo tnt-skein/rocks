@@ -442,6 +442,13 @@ repository = {
          }
       }
    },
+   ["tnt-postgres"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-process"] = {
       ["scm-1"] = {
          {
