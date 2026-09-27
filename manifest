@@ -295,6 +295,13 @@ repository = {
          }
       }
    },
+   ["tnt-lock"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-log"] = {
       ["scm-1"] = {
          {
