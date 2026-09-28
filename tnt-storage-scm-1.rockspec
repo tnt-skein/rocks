@@ -69,6 +69,7 @@ build = {
         ['tnt.storage'] = 'tnt/storage.lua',
         ['tnt.storage.codes'] = 'tnt/storage/codes.lua',
         ['tnt.storage.driver'] = 'tnt/storage/driver.lua',
+        ['tnt.storage.exact'] = 'tnt/storage/exact.lua',
         ['tnt.storage.failure'] = 'tnt/storage/failure.lua',
         ['tnt.storage.link'] = 'tnt/storage/link.lua',
         ['tnt.storage.statement'] = 'tnt/storage/statement.lua',
