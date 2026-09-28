@@ -92,6 +92,13 @@ repository = {
          }
       }
    },
+   ["tnt-console"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-context"] = {
       ["scm-1"] = {
          {
