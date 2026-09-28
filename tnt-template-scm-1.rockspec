@@ -23,7 +23,10 @@ description = {
         страницы и белый список помощников; глобалов узла шаблон не видит.
         Свои директивы и условия заводятся обычной функцией-обработчиком.
         Все шаблоны каталога переводятся заранее, с записью на диск
-        и отпечатком своих директив.
+        и отпечатком своих директив. Тот же шаблон рисуется и простым
+        текстом, без экранирования HTML, — для текстовой части письма;
+        строка, на которой одна директива без вывода, выпадает целиком,
+        и текст с циклом не выходит через строку.
 
         Зависимость — tnt-must: отказы бросаются словом, без места
         в коде. Покрытие строк и убитых мутантов — 100 %.
@@ -48,8 +51,11 @@ build = {
         ['tnt.template.directives'] = 'tnt/template/directives.lua',
         ['tnt.template.engine'] = 'tnt/template/engine.lua',
         ['tnt.template.escape'] = 'tnt/template/escape.lua',
+        ['tnt.template.fragment'] = 'tnt/template/fragment.lua',
         ['tnt.template.sandbox'] = 'tnt/template/sandbox.lua',
+        ['tnt.template.sections'] = 'tnt/template/sections.lua',
         ['tnt.template.source'] = 'tnt/template/source.lua',
+        ['tnt.template.stream'] = 'tnt/template/stream.lua',
         ['tnt.template.translator'] = 'tnt/template/translator.lua',
         ['tnt.template.warm'] = 'tnt/template/warm.lua',
     },
