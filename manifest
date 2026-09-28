@@ -575,6 +575,13 @@ repository = {
          }
       }
    },
+   ["tnt-throttle"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-tls"] = {
       ["scm-1"] = {
          {
