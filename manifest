@@ -456,6 +456,13 @@ repository = {
          }
       }
    },
+   ["tnt-orm"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-outbox"] = {
       ["scm-1"] = {
          {
