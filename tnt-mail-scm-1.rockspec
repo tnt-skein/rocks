@@ -28,17 +28,28 @@ description = {
         из Windows они приходят в cp1251, — а содержимое вложения остаётся
         байтами.
 
+        Письма приложения — объявлениями mail.letters: тема, получатели,
+        вид на tnt-template и данные; простой текст выводится из той же
+        разметки. Отправка — сразу либо очередью с send (tnt-queue):
+        письмо собирается при постановке и повторяется тем же Message-ID,
+        отказ 4xx повторяется, 5xx зарывается сразу (mail.refusal).
+        Предпросмотр кладёт письма в файлы для браузера — make
+        mail-preview. Шаблоны и очередь приходят аргументами.
+
         Шифрование — с первого байта (465, 993, 995) либо STARTTLS.
         Пароль без TLS уходит открытым текстом, и вход с ним требует явного
         признания настройкой allow_plaintext_auth. Способ входа в SMTP
         выбирается из объявленных сервером: CRAM-MD5, PLAIN, LOGIN;
-        XOAUTH2 — по токену OAuth 2.0. Срок назначен каждой операции,
-        отказ — пара, а не исключение.
+        XOAUTH2 — по токену OAuth 2.0 у SMTP, IMAP и POP3, и пароль тогда —
+        функция-поставщик, которую почта зовёт перед каждым входом: токен
+        живёт час. Срок назначен каждой операции, отказ — пара, а не
+        исключение.
 
-        Зависит от tnt-must (отказ настройки), tnt-id (ULID для
-        Message-ID), tnt-log (запись о неотправленном письме), tnt-str
-        (перевод кодировок поверх iconv), tnt-tls (TLS поверх сокета)
-        и tnt-external (подмена сети и шифрования в проверках). Покрытие
+        Зависит от tnt-must (отказ настройки и проверки аргументов),
+        tnt-id (ULID для Message-ID), tnt-log (запись о неотправленном
+        письме), tnt-str (перевод кодировок поверх iconv), tnt-tls (TLS
+        поверх сокета), tnt-fs (файлы предпросмотра) и tnt-external
+        (подмена сети, шифрования и вывода в проверках). Покрытие
         строк и убитых мутантов — 100 %.
     ]],
     homepage = 'https://github.com/tnt-skein/tnt-mail',
@@ -64,6 +75,8 @@ dependencies = {
     'tnt-str',
     -- Шифрование с первого байта и STARTTLS.
     'tnt-tls',
+    -- Файлы предпросмотра писем: подмена целиком и каталог с отказом парой.
+    'tnt-fs',
 }
 
 build = {
@@ -74,6 +87,10 @@ build = {
         ['tnt.mail.encode'] = 'tnt/mail/encode.lua',
         ['tnt.mail.message'] = 'tnt/mail/message.lua',
         ['tnt.mail.parse'] = 'tnt/mail/parse.lua',
+        ['tnt.mail.text'] = 'tnt/mail/text.lua',
+        ['tnt.mail.refusal'] = 'tnt/mail/refusal.lua',
+        ['tnt.mail.preview'] = 'tnt/mail/preview.lua',
+        ['tnt.mail.letters'] = 'tnt/mail/letters.lua',
         ['tnt.mail.smtp'] = 'tnt/mail/smtp.lua',
         ['tnt.mail.pop3'] = 'tnt/mail/pop3.lua',
         ['tnt.mail.imap'] = 'tnt/mail/imap.lua',
