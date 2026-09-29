@@ -55,6 +55,7 @@ build = {
         ['tnt.retry.budget'] = 'tnt/retry/budget.lua',
         ['tnt.retry.classify'] = 'tnt/retry/classify.lua',
         ['tnt.retry.options'] = 'tnt/retry/options.lua',
+        ['tnt.retry.rule'] = 'tnt/retry/rule.lua',
         ['tnt.retry.runner'] = 'tnt/retry/runner.lua',
     },
 }
