@@ -20,8 +20,9 @@ description = {
         и переставляются (before, after, without), слой ставится
         с фильтром по началу пути и способу запроса. Цепочка не бросает
         и не возвращает пустоты: брошенная ошибка становится отказом
-        парой nil, err и называет виновный слой, а слой, забывший позвать
-        next или вернуть его ответ, не остаётся незамеченным.
+        парой nil, err, называет виновный слой и несёт стек места броска,
+        а слой, забывший позвать next или вернуть его ответ, не остаётся
+        незамеченным.
 
         Готовые слои общего назначения: журнал, время ответа, перехват
         отказа, опознаватель запроса и его же заголовком в ответе.
@@ -37,9 +38,10 @@ description = {
         Зависит от tnt-clock (монотонные часы замера), tnt-context
         (контекст файбера с опознавателем запроса), tnt-id (ULID),
         tnt-log (журнал готовых слоёв), tnt-must (проверка настроек
-        слоя cors) и tnt-external (подмена часов и выдачи
-        опознавателей в проверках). Покрытие строк и убитых мутантов —
-        100 %.
+        слоя cors и бросок отказа объявления без места) и tnt-external
+        (подмена часов и выдачи опознавателей в проверках). Ошибка
+        объявления называет строку приложения, позвавшую вход пакета.
+        Покрытие строк и убитых мутантов — 100 %.
     ]],
     homepage = 'https://github.com/tnt-skein/tnt-middleware',
     issues_url = 'https://github.com/tnt-skein/tnt-middleware/issues',
@@ -62,7 +64,9 @@ build = {
     type = 'builtin',
     modules = {
         ['tnt.middleware'] = 'tnt/middleware.lua',
+        ['tnt.middleware.blame'] = 'tnt/middleware/blame.lua',
         ['tnt.middleware.chain'] = 'tnt/middleware/chain.lua',
+        ['tnt.middleware.fall'] = 'tnt/middleware/fall.lua',
         ['tnt.middleware.filter'] = 'tnt/middleware/filter.lua',
         ['tnt.middleware.registry'] = 'tnt/middleware/registry.lua',
         ['tnt.middleware.layer.common'] = 'tnt/middleware/layer/common.lua',
