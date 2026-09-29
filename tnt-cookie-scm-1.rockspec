@@ -23,12 +23,15 @@ description = {
         недопустимые знаки вместо того, чтобы молча их вырезать. Значение
         подписывается HMAC-SHA256 со сравнением за постоянное время,
         а хранилище отбирает куки по домену, пути, сроку и Secure —
-        по правилам RFC 6265, а не на глаз.
+        по правилам RFC 6265, а не на глаз. Куку с Secure из открытого
+        канала хранилище не берёт, а на публичный суффикс не ставит,
+        если на узле есть системная libpsl.
 
         Зависит от tnt-validate (проверка настроек), tnt-hash (подпись
         и её сверка), tnt-log (журнал пропущенных кусков заголовка),
         tnt-clock (стенные часы сроков) и tnt-external (подмена часов
-        в проверках). Покрытие строк и убитых мутантов — 100 %.
+        и загрузки libpsl в проверках); libpsl необязательна. Покрытие
+        строк и убитых мутантов — 100 %.
     ]],
     homepage = 'https://github.com/tnt-skein/tnt-cookie',
     issues_url = 'https://github.com/tnt-skein/tnt-cookie/issues',
@@ -55,6 +58,7 @@ build = {
         ['tnt.cookie.parse'] = 'tnt/cookie/parse.lua',
         ['tnt.cookie.build'] = 'tnt/cookie/build.lua',
         ['tnt.cookie.sign'] = 'tnt/cookie/sign.lua',
+        ['tnt.cookie.suffix'] = 'tnt/cookie/suffix.lua',
         ['tnt.cookie.jar'] = 'tnt/cookie/jar.lua',
     },
 }
