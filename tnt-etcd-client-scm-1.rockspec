@@ -67,6 +67,7 @@ build = {
         ['tnt.etcd.kv'] = 'tnt/etcd/kv.lua',
         ['tnt.etcd.lease'] = 'tnt/etcd/lease.lua',
         ['tnt.etcd.transport'] = 'tnt/etcd/transport.lua',
+        ['tnt.etcd.verdict'] = 'tnt/etcd/verdict.lua',
         ['tnt.etcd.watch'] = 'tnt/etcd/watch.lua',
     },
 }
