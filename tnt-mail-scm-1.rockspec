@@ -45,11 +45,15 @@ description = {
         живёт час. Срок назначен каждой операции, отказ — пара, а не
         исключение.
 
+        Отправки видны рядами метрик: сколько писем ушло и сколько
+        отказов каждого рода, и сколько шёл разговор с сервером.
+
         Зависит от tnt-must (отказ настройки и проверки аргументов),
         tnt-id (ULID для Message-ID), tnt-log (запись о неотправленном
         письме), tnt-str (перевод кодировок поверх iconv), tnt-tls (TLS
-        поверх сокета), tnt-fs (файлы предпросмотра) и tnt-external
-        (подмена сети, шифрования и вывода в проверках). Покрытие
+        поверх сокета), tnt-fs (файлы предпросмотра), tnt-metrics (ряды
+        отправок), tnt-clock (длительность разговора) и tnt-external
+        (подмена сети, шифрования, часов и вывода в проверках). Покрытие
         строк и убитых мутантов — 100 %.
     ]],
     homepage = 'https://github.com/tnt-skein/tnt-mail',
@@ -77,6 +81,10 @@ dependencies = {
     'tnt-tls',
     -- Файлы предпросмотра писем: подмена целиком и каталог с отказом парой.
     'tnt-fs',
+    -- Ряды отправок в реестре встроенного metrics: итог и длительность.
+    'tnt-metrics',
+    -- Длительность разговора с сервером — монотонными часами.
+    'tnt-clock',
 }
 
 build = {
@@ -89,6 +97,7 @@ build = {
         ['tnt.mail.parse'] = 'tnt/mail/parse.lua',
         ['tnt.mail.text'] = 'tnt/mail/text.lua',
         ['tnt.mail.refusal'] = 'tnt/mail/refusal.lua',
+        ['tnt.mail.series'] = 'tnt/mail/series.lua',
         ['tnt.mail.preview'] = 'tnt/mail/preview.lua',
         ['tnt.mail.letters'] = 'tnt/mail/letters.lua',
         ['tnt.mail.smtp'] = 'tnt/mail/smtp.lua',
