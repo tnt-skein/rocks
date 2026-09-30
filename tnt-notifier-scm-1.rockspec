@@ -34,10 +34,13 @@ description = {
         предупреждением конфигурации в config:info().alerts, и тревога
         работает там, где настроен Prometheus, без единого приёмника.
 
+        Негодная настройка уведомителя или приёмника — бросок на строке
+        вызывающего, а не отказ в журнале на каждом обходе.
+
         Зависит от tnt-clock (часы), tnt-disk (дозапись файла), tnt-http
-        (клиент HTTP), tnt-log (журнал), tnt-mail (письмо) и tnt-external
-        (подмена часов, реестра, диска и клиента в проверках). Покрытие
-        строк и убитых мутантов — 100 %.
+        (клиент HTTP), tnt-log (журнал), tnt-mail (письмо), tnt-must
+        (проверка настроек) и tnt-external (подмена часов, реестра, диска
+        и клиента в проверках). Покрытие строк и убитых мутантов — 100 %.
     ]],
     homepage = 'https://github.com/tnt-skein/tnt-notifier',
     issues_url = 'https://github.com/tnt-skein/tnt-notifier/issues',
@@ -58,6 +61,8 @@ dependencies = {
     'tnt-log',
     -- Письмо приёмника mail.
     'tnt-mail',
+    -- Проверка настроек уведомителя и приёмников: бросок с местом вызывающего.
+    'tnt-must',
     -- Подмена часов, реестра проверок, диска и клиента в проверках.
     'tnt-external',
 }
@@ -66,6 +71,7 @@ build = {
     type = 'builtin',
     modules = {
         ['tnt.notifier'] = 'tnt/notifier.lua',
+        ['tnt.notifier.settings'] = 'tnt/notifier/settings.lua',
         ['tnt.notifier.sink.log'] = 'tnt/notifier/sink/log.lua',
         ['tnt.notifier.sink.file'] = 'tnt/notifier/sink/file.lua',
         ['tnt.notifier.sink.http'] = 'tnt/notifier/sink/http.lua',
