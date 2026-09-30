@@ -302,6 +302,13 @@ repository = {
          }
       }
    },
+   ["tnt-kernel"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-labels"] = {
       ["scm-1"] = {
          {
