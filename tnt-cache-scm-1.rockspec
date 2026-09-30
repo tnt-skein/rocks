@@ -30,8 +30,14 @@ description = {
 
         Договор отказа назван у каждого действия: чтение при отказе
         драйвера отвечает промахом и пишет о нём в журнал, запись
-        бросает, sweep отдаёт пару. Зависит от tnt-must (броски ошибок
-        программиста), tnt-clock (часы), tnt-log (журнал промахов)
+        бросает, sweep отдаёт пару.
+
+        Обращения за значением видны рядами метрик: сколько попаданий,
+        промахов и отказов было у каждого хранилища и сколько шло чтение
+        драйвером.
+
+        Зависит от tnt-must (броски ошибок программиста), tnt-clock
+        (часы), tnt-log (журнал промахов), tnt-metrics (ряды обращений)
         и tnt-external (подмена часов, уступки и транзакции в проверках).
     ]],
     homepage = 'https://github.com/tnt-skein/tnt-cache',
@@ -51,15 +57,21 @@ dependencies = {
     'tnt-log',
     -- Подмена уступки, часов, метки держателя и транзакции в проверках.
     'tnt-external',
+    -- Ряды обращений в реестре встроенного metrics: итог и длительность.
+    'tnt-metrics',
 }
 
 build = {
     type = 'builtin',
     modules = {
         ['tnt.cache'] = 'tnt/cache.lua',
+        ['tnt.cache.lock'] = 'tnt/cache/lock.lua',
         ['tnt.cache.memory'] = 'tnt/cache/memory.lua',
+        ['tnt.cache.record'] = 'tnt/cache/record.lua',
         ['tnt.cache.redis'] = 'tnt/cache/redis.lua',
+        ['tnt.cache.series'] = 'tnt/cache/series.lua',
         ['tnt.cache.space'] = 'tnt/cache/space.lua',
         ['tnt.cache.store'] = 'tnt/cache/store.lua',
+        ['tnt.cache.tagged'] = 'tnt/cache/tagged.lua',
     },
 }
