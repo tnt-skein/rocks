@@ -61,6 +61,7 @@ build = {
     modules = {
         ['tnt.date'] = 'tnt/date.lua',
         ['tnt.date.arith'] = 'tnt/date/arith.lua',
+        ['tnt.date.explain'] = 'tnt/date/explain.lua',
         ['tnt.date.http'] = 'tnt/date/http.lua',
         ['tnt.date.human'] = 'tnt/date/human.lua',
         ['tnt.date.iso'] = 'tnt/date/iso.lua',
