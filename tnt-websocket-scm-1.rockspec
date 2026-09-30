@@ -35,13 +35,18 @@ description = {
         Клиент — ws:// и wss:// через tnt-tls с проверкой сертификата,
         одним сроком на соединение, TLS и рукопожатие. Отказ — пара
         nil, err с родом; негодный аргумент — бросок на строке
-        вызывающего. Расширений (permessage-deflate) нет.
+        вызывающего.
+
+        Сжатие сообщений permessage-deflate (RFC 7692) включается
+        настройкой compress с обеих сторон: договор в рукопожатии, свой
+        словарь сжатия от сообщения к сообщению, разжатие с пределом
+        сообщения против «бомбы».
 
         Зависит от tnt-must (проверки аргументов), tnt-clock (сроки),
         tnt-context (сессия в контексте запроса), tnt-hash (SHA-1 ответа
         на ключ), tnt-log (журнал), tnt-external (подмена внешних средств
-        в проверках) и tnt-tls (клиент wss://). Покрытие строк и убитых
-        мутантов — 100 %.
+        в проверках), tnt-tls (клиент wss://) и tnt-compress (сжатие
+        сообщений). Покрытие строк и убитых мутантов — 100 %.
     ]],
     homepage = 'https://github.com/tnt-skein/tnt-websocket',
     issues_url = 'https://github.com/tnt-skein/tnt-websocket/issues',
@@ -68,6 +73,9 @@ dependencies = {
     'tnt-external',
     -- Клиент wss://.
     'tnt-tls',
+    -- Сжатие и разжатие сообщений permessage-deflate: DEFLATE без обёртки
+    -- на системной zlib.
+    'tnt-compress',
 }
 
 build = {
@@ -77,6 +85,7 @@ build = {
         ['tnt.websocket.client'] = 'tnt/websocket/client.lua',
         ['tnt.websocket.codes'] = 'tnt/websocket/codes.lua',
         ['tnt.websocket.connection'] = 'tnt/websocket/connection.lua',
+        ['tnt.websocket.deflate'] = 'tnt/websocket/deflate.lua',
         ['tnt.websocket.failure'] = 'tnt/websocket/failure.lua',
         ['tnt.websocket.frame'] = 'tnt/websocket/frame.lua',
         ['tnt.websocket.handshake'] = 'tnt/websocket/handshake.lua',
