@@ -39,10 +39,20 @@ description = {
         аргументом настройки — всякий, у которого есть вызов put_file,
         манифест выгружается последним, а срок хранения в ведре ведёт
         правило его жизненного цикла, и ключу узла хватает права на запись.
+        Обратно копия забирается тем же клиентом и ключом только на чтение:
+        список копий в ведре по манифестам и забор в новый каталог с той же
+        раскладкой, манифестом последним.
+
+        Снимается копия и по расписанию cron в поясе: срок принимает ту же
+        работу, что и вызов оператора, только на узле для записи и под
+        замком кластера, который приходит аргументом и берётся
+        на репликасет. Негодное расписание из конфигурации — отказ парой,
+        а прежнее расписание идёт дальше.
 
         Зависимости: tnt-async, tnt-clock, tnt-collection, tnt-context,
-        tnt-disk, tnt-external, tnt-fingerprint, tnt-log, tnt-loop, tnt-once
-        и tnt-recovery. Покрытие строк и убитых мутантов — 100 %.
+        tnt-disk, tnt-external, tnt-fingerprint, tnt-log, tnt-loop, tnt-must,
+        tnt-once, tnt-recovery и tnt-scheduler. Покрытие строк и убитых
+        мутантов — 100 %.
     ]],
     homepage = 'https://github.com/tnt-skein/tnt-maintenance',
     issues_url = 'https://github.com/tnt-skein/tnt-maintenance/issues',
@@ -69,10 +79,14 @@ dependencies = {
     'tnt-fingerprint',
     -- Записи о принятых работах, окне копирования и уборке.
     'tnt-log',
+    -- Проверка настроек расписания: негодный замок бросает на строке вызывающего.
+    'tnt-must',
     -- Один ответ на повтор запроса с тем же ключом.
     'tnt-once',
     -- Оценка риска, ворота опасного действия и разбор личности копии.
     'tnt-recovery',
+    -- Съём копии по расписанию cron: срок, узел для записи, замок кластера.
+    'tnt-scheduler',
     -- Подмена ядра, часов и диска в проверках.
     'tnt-external',
 }
@@ -92,5 +106,6 @@ build = {
         ['tnt.maintenance.diagnosis'] = 'tnt/maintenance/diagnosis.lua',
         ['tnt.maintenance.backup'] = 'tnt/maintenance/backup.lua',
         ['tnt.maintenance.offload'] = 'tnt/maintenance/offload.lua',
+        ['tnt.maintenance.schedule'] = 'tnt/maintenance/schedule.lua',
     },
 }
