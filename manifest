@@ -575,6 +575,13 @@ repository = {
          }
       }
    },
+   ["tnt-scheduler"] = {
+      ["scm-1"] = {
+         {
+            arch = "rockspec"
+         }
+      }
+   },
    ["tnt-schema"] = {
       ["scm-1"] = {
          {
