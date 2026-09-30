@@ -35,6 +35,8 @@ description = {
         Чужой отказ на границе HTTP — таблица с числовым status — сохраняет
         свой статус, заголовки и опознаватель: 404 роутера остаётся 404.
         Готовы слой для конвейера слоёв и обработчик отказов для роутера.
+        О внутренней поломке узнают и крюки, поставленные hook: приёмник
+        происшествий получает её с тем же опознавателем, что и журнал.
         Пароли, токены, ключи, куки и строки запроса с ними вырезаются
         и из ответа, и из страницы, и из записи.
 
@@ -75,6 +77,7 @@ build = {
         ['tnt.error.accept'] = 'tnt/error/accept.lua',
         ['tnt.error.catalog'] = 'tnt/error/catalog.lua',
         ['tnt.error.failure'] = 'tnt/error/failure.lua',
+        ['tnt.error.hook'] = 'tnt/error/hook.lua',
         ['tnt.error.incident'] = 'tnt/error/incident.lua',
         ['tnt.error.options'] = 'tnt/error/options.lua',
         ['tnt.error.page'] = 'tnt/error/page.lua',
