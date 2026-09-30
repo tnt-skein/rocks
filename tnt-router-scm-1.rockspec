@@ -57,8 +57,9 @@ dependencies = {
     -- Сервер, на который роутер ставится; раздача берёт у него таблицу
     -- типов содержимого, а не держит свою копию.
     'http',
-    -- Бросок без места: повторный выброс исключения группы и обрыв потока;
-    -- проверка аргументов адресов и подписи с виной на вызывающем.
+    -- Бросок без места: отказы шаблона, дерева и маршрута, которым место
+    -- приписывает вход роутера, повторный выброс исключения группы и обрыв
+    -- потока; проверка аргументов адресов и подписи с виной на вызывающем.
     'tnt-must',
     -- Подпись ссылок: HMAC-SHA256 и сверка за постоянное время. Своя
     -- свёртка поверх `crypto` в пакете была бы вторым местом для того же,
@@ -102,6 +103,7 @@ build = {
         ['tnt.router'] = 'tnt/router.lua',
         ['tnt.router.address'] = 'tnt/router/address.lua',
         ['tnt.router.answer'] = 'tnt/router/answer.lua',
+        ['tnt.router.blame'] = 'tnt/router/blame.lua',
         ['tnt.router.constraints'] = 'tnt/router/constraints.lua',
         ['tnt.router.declare'] = 'tnt/router/declare.lua',
         ['tnt.router.errors'] = 'tnt/router/errors.lua',
